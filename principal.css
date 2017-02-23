@@ -1,0 +1,9 @@
+header
+{
+    display:flex;
+    border-style:solid;
+    border-color:black;
+    border-width:5px;
+    justify-content: space-between
+}
+
