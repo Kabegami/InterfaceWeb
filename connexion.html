@@ -2,27 +2,26 @@
 <html>
     <head>
         <title>Connexion></title>
-        <link href="connexion.css" rel="stylesheet">
+        <link href="connexion.css" rel="stylesheet" type="text/css" >
     </head>
     <body>
         <h1> Ouvrir une session</h1>
         <form action="javascript:function(){return;}()" method ="get" onSubmit ="javascript=connexion(this)"/>
-        <div id="conteneur">
-          <div id="entrer">
-          <div class ="formulaire">
+        <div id="formulaire">
+          <div class ="texte">
             <span>login</span>
+            <span>Mot de passe</span>
+          </div>
+          <div class="entrer">
+            <span><input type="Mot de passe" name="login"/></span>
             <span><input type="text"  name="Login"/></span>
           </div>
-          <div class="formulaire">
-            <span>password</span>
-            <span><input type="Mot de passe" name="login"/></span>
           </div>
-          </div>
-          <div class="bas">
+          <div class="bouttons">
             <div class="boutons">
               <input type="submit" value="connexion"/>
             </div>
-            <div class="links">
+            <div class="liens">
               <div class="elem"><a href="">Mot de passe perdu</a></div>
               <div class="elem"><a href="">Pas encore inscrit ?</a></div>
             </div>

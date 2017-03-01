@@ -2,7 +2,59 @@
 <html>
     <head>
         <title>Principal</title>
-        <link href="principal.css" rel="stylesheet">
+        <!-- <link href="principal.css" rel="stylesheet"> -->
+        <style>
+ header
+{
+    display:flex;
+    border-bottom: 8px solid blue;
+ justify-content: space-between;
+ color : #2F83DE;
+ margin-bottom:5px;
+ font-weight:bold;
+ font-size:1.1em;
+ }
+
+ .recherche:hover
+ {
+ color:blue;
+ border-bottom: 5px solid blue;
+ margin-bottom:10px;
+ }
+
+ .deconnection:hover
+ {
+ color:blue;
+ border-bottom: 5px solid blue;
+ margin-bottom:10px;
+ }
+
+ #Principal
+{
+    display:flex;
+ justify-content: space-around;
+ 
+ }
+
+ #corp
+ {
+ display:flex;
+ flex-direction:column;
+ flex:3
+ }
+
+ nav
+ {
+ border-right: 2px dotted green;
+ padding-right:5px;
+ margin-right:5px;
+ 
+ 
+ }
+
+ </style>
+ 
+        
     </head>
     
     <body>
@@ -11,11 +63,31 @@
                 <p>Logo</p>
             </div>
             <div class="recherche">
-                <p>recherche</p>
+              <p>recherche</p>
             </div>
             <div class="deconnection">
                 <p>deconnection</p>
             </div>
         </header>
+        <div id="Principal">
+        <nav class = "Statistique">
+          <p>Il y a les statistique ici</p>
+        </nav>
+        <div id="corp">
+        <section>
+          <p>Zone ou sont les messages</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis justo vitae vulputate condimentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dignissim, quam semper congue tincidunt, neque leo finibus sapien, id scelerisque erat massa ut felis. Morbi vulputate risus vel diam egestas, rhoncus mollis est tincidunt. In libero felis, congue tempor nisi vel, vulputate pellentesque orci. Quisque efficitur ante leo, a pretium ex porttitor mattis. Cras commodo lorem eget justo sodales, non imperdiet nunc euismod. Phasellus nec nunc et purus rhoncus mollis. Donec ac dignissim sem. Donec aliquet eros diam, nec tincidunt tellus cursus ut. Suspendisse aliquam fermentum arcu ac ultrices.</p>
 
+<p>Nunc tortor odio, volutpat vitae efficitur ut, venenatis id diam. Curabitur et tincidunt felis, a luctus tellus. Donec urna enim, sodales id suscipit sed, eleifend eget sem. Vivamus bibendum, augue id consectetur accumsan, nisi lacus laoreet mauris, dictum mollis augue massa quis est. Quisque eget malesuada lectus, at facilisis nibh. In maximus, sapien ut efficitur rutrum, magna neque malesuada neque, id imperdiet elit massa eu dui. Aliquam eu dolor in nunc vestibulum ornare. Praesent tincidunt sollicitudin dictum. Nunc dolor turpis, tincidunt quis dapibus eu, placerat non ex. Maecenas interdum mollis ante id blandit. Praesent quis auctor massa. Pellentesque faucibus, nibh feugiat euismod suscipit, ante eros blandit ante, ac feugiat enim odio vitae nunc. Donec dignissim felis sem, id imperdiet est consectetur vitae. Mauris ligula metus, pellentesque et blandit vel, aliquet volutpat quam. Sed sed vestibulum tortor. Suspendisse ac ullamcorper velit.</p>
+
+<p>Sed lacinia mi nec ultricies iaculis. Donec non magna ut tellus mollis eleifend eget ut nulla. Nulla porttitor faucibus tellus, sollicitudin posuere sem ullamcorper ac. Pellentesque mi tortor, sodales id egestas non, semper sit amet lacus. Proin non orci viverra justo malesuada dapibus. Quisque porttitor feugiat porta. Duis auctor purus sit amet mollis consectetur. Mauris tempor, velit non laoreet imperdiet, sem ipsum feugiat felis, nec pharetra neque turpis nec quam. In hac habitasse platea dictumst. Nunc ex ex, consequat et commodo in, scelerisque eu metus. Proin eu porttitor nibh, in sagittis dolor. Nam scelerisque non leo vitae viverra. Vestibulum porttitor metus sit amet leo vehicula accumsan.</p>
+        </section>
+        <section>
+          <p>Ici il y a les nouveaux messages</p>
+        </section>
+        </div>
+        </div>
     </body>
+
+
+    

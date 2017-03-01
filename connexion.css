@@ -2,32 +2,21 @@ h1 {
     margin-bottom:10px;
 }
 
-.formulaire
-{
-    margin-top:5px;
-}
-
-#conteneur
+#formulaire
 {
     display:flex;
-    flex-direction: column;
 }
 
-.bas
-{
-    margin-top:20px;
-    display:flex;
-    align-content:space-between;
-}
-
-#entrer
+.texte
 {
     display:flex;
-    flex-direction: column;
+    flex-direction:column;
 }
 
-input
+.entrer
 {
-    position:absolute;
-    left:15%;
+    margin-left:5px;
+    display:flex;
+    flex-direction:column;
 }
+

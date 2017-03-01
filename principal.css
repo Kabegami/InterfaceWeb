@@ -4,6 +4,12 @@ header
     border-style:solid;
     border-color:black;
     border-width:5px;
-    justify-content: space-between
+    justify-content: space-between;
+    color:red;
 }
 
+#Principal
+{
+    display:flex;
+    flex-direction:column;
+}
