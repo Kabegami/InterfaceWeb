@@ -4,53 +4,89 @@
         <title>Principal</title>
         <!-- <link href="principal.css" rel="stylesheet"> -->
         <style>
- header
+.navigation
 {
-    display:flex;
-    border-bottom: 8px solid blue;
+display:flex;
  justify-content: space-between;
- color : #2F83DE;
+ color:white;
+ background-color:#343538;
  margin-bottom:5px;
  font-weight:bold;
- font-size:1.1em;
+font-size:1.1em;
+text-align:center;
  }
 
- .recherche:hover
+.logo
+{
+flex:1;
+}
+
+ .headElem:hover
  {
- color:blue;
- border-bottom: 5px solid blue;
- margin-bottom:10px;
- }
+ background-color:black;
+}
 
- .deconnection:hover
+.headElem{
+flex:1;
+}
+
+.active{
+flex:1;
+background-color:green;
+}
+
+ body
  {
- color:blue;
- border-bottom: 5px solid blue;
- margin-bottom:10px;
- }
+background-color:#e5eaea;
+display:flex;
+flex-direction:column;
+}
 
+ 
  #Principal
 {
     display:flex;
- justify-content: space-around;
- 
+justify-content: space-around;
  }
 
  #corp
  {
  display:flex;
  flex-direction:column;
- flex:3
+ justify-content:space-around;
+ flex:10;
  }
 
  nav
  {
- border-right: 2px dotted green;
+border: 0.5px solid grey;
+border-radius: 4px;
  padding-right:5px;
  margin-right:5px;
- 
- 
+ padding-left:5px;
+ margin-left:5px;
+ background-color:white;
+ flex:1;
  }
+
+ section
+ {
+border: 0.5px solid grey;
+border-radius: 4px;
+ margin:5px;
+ padding:5px;
+ background-color:white;
+ flex:2;
+}
+
+footer
+{
+background-color:white;
+border: 0.5px solid grey;
+border-radius: 4px;
+margin:5px;
+padding:5px;
+}
 
  </style>
  
@@ -58,15 +94,21 @@
     </head>
     
     <body>
-        <header>
+        <header class="navigation">
             <div class="logo">
                 <p>Logo</p>
             </div>
-            <div class="recherche">
+            <div class="active">
+              <p>accueil</p>
+            </div>
+            <div class="headElem">
               <p>recherche</p>
             </div>
-            <div class="deconnection">
-                <p>deconnection</p>
+            <div class="headElem">
+              <p>profil</p>
+             </div>
+            <div class="headElem">
+                <p>déconnexion</p>
             </div>
         </header>
         <div id="Principal">
@@ -75,18 +117,16 @@
         </nav>
         <div id="corp">
         <section>
-          <p>Zone ou sont les messages</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis justo vitae vulputate condimentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dignissim, quam semper congue tincidunt, neque leo finibus sapien, id scelerisque erat massa ut felis. Morbi vulputate risus vel diam egestas, rhoncus mollis est tincidunt. In libero felis, congue tempor nisi vel, vulputate pellentesque orci. Quisque efficitur ante leo, a pretium ex porttitor mattis. Cras commodo lorem eget justo sodales, non imperdiet nunc euismod. Phasellus nec nunc et purus rhoncus mollis. Donec ac dignissim sem. Donec aliquet eros diam, nec tincidunt tellus cursus ut. Suspendisse aliquam fermentum arcu ac ultrices.</p>
-
-<p>Nunc tortor odio, volutpat vitae efficitur ut, venenatis id diam. Curabitur et tincidunt felis, a luctus tellus. Donec urna enim, sodales id suscipit sed, eleifend eget sem. Vivamus bibendum, augue id consectetur accumsan, nisi lacus laoreet mauris, dictum mollis augue massa quis est. Quisque eget malesuada lectus, at facilisis nibh. In maximus, sapien ut efficitur rutrum, magna neque malesuada neque, id imperdiet elit massa eu dui. Aliquam eu dolor in nunc vestibulum ornare. Praesent tincidunt sollicitudin dictum. Nunc dolor turpis, tincidunt quis dapibus eu, placerat non ex. Maecenas interdum mollis ante id blandit. Praesent quis auctor massa. Pellentesque faucibus, nibh feugiat euismod suscipit, ante eros blandit ante, ac feugiat enim odio vitae nunc. Donec dignissim felis sem, id imperdiet est consectetur vitae. Mauris ligula metus, pellentesque et blandit vel, aliquet volutpat quam. Sed sed vestibulum tortor. Suspendisse ac ullamcorper velit.</p>
-
-<p>Sed lacinia mi nec ultricies iaculis. Donec non magna ut tellus mollis eleifend eget ut nulla. Nulla porttitor faucibus tellus, sollicitudin posuere sem ullamcorper ac. Pellentesque mi tortor, sodales id egestas non, semper sit amet lacus. Proin non orci viverra justo malesuada dapibus. Quisque porttitor feugiat porta. Duis auctor purus sit amet mollis consectetur. Mauris tempor, velit non laoreet imperdiet, sem ipsum feugiat felis, nec pharetra neque turpis nec quam. In hac habitasse platea dictumst. Nunc ex ex, consequat et commodo in, scelerisque eu metus. Proin eu porttitor nibh, in sagittis dolor. Nam scelerisque non leo vitae viverra. Vestibulum porttitor metus sit amet leo vehicula accumsan.</p>
+          <p>Ici on va faire apparaitre les différents messages
         </section>
         <section>
           <p>Ici il y a les nouveaux messages</p>
         </section>
         </div>
         </div>
+        <footer>
+          <p> Me contacter : <a href="">lucas.becirspahic@gmail.com</p>
+        </footer>
     </body>
 
 
