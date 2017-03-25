@@ -33,7 +33,7 @@ body{
     background-color:#e5eaea;
 }
 
-.Principal
+.Panneau
 {
     background-color:white;
     border: 0.5px grey solid;
@@ -59,7 +59,7 @@ input[type=text]
 }
 
 input[type=submit] {
-    width: 24%;
+    width: 100%;
     background-color: green;
     color: white;
     padding: 14px 20px;
@@ -71,4 +71,18 @@ input[type=submit] {
 
 input[type=submit]:hover {
     background-color: DarkGreen;
+}
+
+.lien{
+    color:blue;
+    text-decoration:underline;
+}
+
+.lien:hover{
+    cursor: pointer;
+    color:DarkBlue;
+}
+
+.lien:focus{
+    color:red;
 }

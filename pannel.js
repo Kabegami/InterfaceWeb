@@ -19,7 +19,7 @@ function makeConnexionPannel(){
           <p>connexion</p>\
         </div>\
       </header>\
-      <div class= \"Principal\">\
+      <div class= \"Panneau\">\
         <h2 class=\"titre\"> Ouvrir une session</h1>\
         <form action=\"javascript:function(){return;}()\" method =\"get\" onSubmit =\"javascript=connexion(this)\"/>\
         <label for=\"login\">Login</br></label>\
@@ -31,8 +31,8 @@ function makeConnexionPannel(){
         </br>\
         <input type=\"submit\" value=\"connexion\"/>\
         <div class=\"liens\">\
-          <div class=\"elem\"><a href=\"\">Mot de passe perdu</a></div>\
-          <div class=\"elem\" onclick=\"makeInscriptionPannel()\"><a href=\"\">Pas encore inscrit ?</a></div>\
+          <div class=\"lien\"><span>Mot de passe perdu</span></div>\
+          <div class=\"lien\" onclick=\"makeInscriptionPannel()\"><span>Pas encore inscrit ?</span></div>\
         </div>\
         </form>\
 </div>";
@@ -92,8 +92,4 @@ function makeInscriptionPannel() {
 $(function(){
     makeConnexionPannel();
     // jQuery methods go here...
-    $(".elem").click(function(){
-        makeInscriptionPannel();
-    });
-
 });
