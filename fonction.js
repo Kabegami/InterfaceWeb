@@ -46,6 +46,12 @@ function revival(key,value){
     return value;
 }
 
+function init(){
+    var noConnection = true;
+    var env = {};
+    setVirtualMessage()
+}
+    
 function setVirtualMessage(){
     // on créer une base de donnée local pour les test
     var localdb = [];
@@ -65,50 +71,6 @@ function setVirtualMessage(){
     localdb[3] = new Message(42,user1,"rololol",new Date(),[com1,com2]);
 }
 
-       
-function makeConnexionPannel(){
-    //alert('ici')
-    var s = "<div id=\"connexion \">\
-      <header class=\"navigation \">\
-        <div class=\"logo\">\
-          <p>Logo</p>\
-        </div>\
-        <div class=\"headElem\">\
-          <p>accueil</p>\
-        </div>\
-        <div class=\"headElem\">\
-          <p>recherche</p>\
-        </div>\
-        <div class=\"headElem\">\
-          <p>profil</p>\
-        </div>\
-        <div class=\"active\">\
-          <p>connexion</p>\
-        </div>\
-      </header>\
-      <div class= \"Principal\">\
-        <h2 class=\"titre\"> Ouvrir une session</h1>\
-        <form action=\"javascript:function(){return;}()\" method =\"get\" onSubmit =\"javascript=connexion(this)\"/>\
-        <label for=\"login\">Login</br></label>\
-        <input type=\"text\" name=\"login\" id=\"login\" placeholder=\"Login\" />\
-        </br>\
-        \
-        <label for=\"password\">Mot de passe</br></label>\
-        <input type=\"text\"  name=\"password\" id=\"password\" placeholder=\"Mot de passe\" />\
-        </br>\
-        <input type=\"submit\" value=\"connexion\"/>\
-        <div class=\"liens\">\
-          <div class=\"elem\"><a href=\"\">Mot de passe perdu</a></div>\
-          <div class=\"elem\"><a href=\"\">Pas encore inscrit ?</a></div>\
-        </div>\
-        </form>\
-</div>";
-    a = document.getElementsByTagName('body')[0];
-    //alert(a);
-    a.innerHTML = s;
-
-//    $("body").html(s);
-}
 
 var m = new Message(1,"raoul","Bonjour !","blabla",12, "comment");
 var c= new Commentaire(2,"bily","Hey !","blabla",12);

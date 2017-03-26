@@ -86,3 +86,39 @@ input[type=submit]:hover {
 .lien:focus{
     color:red;
 }
+
+ #Principal
+{
+    display:flex;
+justify-content: space-around;
+ }
+
+  #corp
+ {
+ display:flex;
+ flex-direction:column;
+ justify-content:space-around;
+ flex:10;
+ }
+
+  nav{
+      flex:2;
+  }
+  
+  #newMessages
+  {
+    background-color:white;
+    border: 0.5px grey solid;
+    border-radius: 4px;
+    margin: 15px;
+    padding: 15px;
+  }
+
+  #allMessages
+  {
+    background-color:white;
+    border: 0.5px grey solid;
+    border-radius: 4px;
+    margin: 15px;
+    padding: 15px;
+  }
