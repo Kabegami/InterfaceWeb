@@ -26,19 +26,22 @@ function fun_erreur(msg){
         old_msg.replaceWith(msg_box);
     }
     // on rajoute du css
-    $("#msg_err_connexion").css({"color:red;"});
+    $("#msg_err_connexion").css("color:red;");
 }
 
 function connecte(login, password){
     console.log(login + " " + password);
     var idUser = 78;
     var key = "232323";
-    if (!noConnexion){
+    //alert(env.noConnexion)
+    if (!(env.noConnexion)){
         //Si on est connecte au serveur, on fait la requete sur le serveur
         var b = "fait rien";
+        //alert("je suis connecté au serveur")
     }
     else {
         // On fait la requete a partir des données local
+        //alert("je ne suis pas connecté au serveur")
         reponseConnexion({"key":key,"id":idUser,"login":login,"follow":[2]});
     }
 }
@@ -48,25 +51,25 @@ function reponseConnexion(rep){
         env.key = rep.key;
         env.id = rep.id;
         env.login = rep.login;
-        env.follow = new set();
+        env.follow = new Set();
+        console.log(env.key)
         for (var i = 0; i < rep.follow.lenght;i++){
             env.follow.add(rep.follow[i]);
         }
-        if (noConnection()){
-            follow[rep.id] = new set();
+        if (!(env.noConnexion)){
             // to do
         }
+        makeMainPannel(env.id, env.login, env.query)
+        
     }
-        //makeMainPanel() to do ;
-        else {
-            func_erreur(rep.erreur);
-        }
+    else {
+        func_error(rep.error)
     }
-         
+}
 
 function connexion(form){
     var login = form.login.value;
-    var password = form.pass.value;
+    var password = form.password.value;
     if (verif_form_connexion(login,password)){
         connecte(login,password);
     }

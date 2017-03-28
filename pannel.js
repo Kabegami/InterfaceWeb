@@ -47,15 +47,17 @@ function revival(key,value){
 }
 
 function init(){
-    env = new Object()
-    env.noConnection = false;
+    //Une variable déclarere sans l'attribut var sera une variable globale
+    //alert("la fonction init est lancé");
+    env = new Object();
+    env.noConnexion = true;
     setVirtualMessage();
 }
     
 function setVirtualMessage(){
     // on créer une base de donnée local pour les test
-    var localdb = [];
-    var follow = [];
+    localdb = [];
+    follow = [];
     var user1 = {"id":1,"login":"bob"};
     var user2 = {"id":2,"login":"toto"};
     var user3 = {"id":3,"login":"raoul"};
@@ -85,7 +87,7 @@ function getFromLocalDB(from, minId, maxId, nbMax){
         if ((nbMax >=0) && (nb > nbMax)){
             break;
         }
-        var m = localdb[:];
+        var m = localdb
         if ((maxId < 0) || (m.id < maxId) && m.id > minId){
             if ((f == undefined) || (m.auteur.id == from) || (f.has(m.auteur.id))){
                 tab.push(m)
@@ -122,13 +124,13 @@ function makeConnexionPannel(){
       </header>\
       <div class= \"Panneau\">\
         <h2 class=\"titre\"> Ouvrir une session</h1>\
-        <form action=\"javascript:function(){return;}()\" method =\"get\" onSubmit =\"javascript=connexion(this)\"/>\
+        <form action=\"javascript:function(){return;}()\" method =\"get\" onSubmit =\"javascript=connexion(this)\"/ id=>\
         <label for=\"login\">Login</br></label>\
-        <input type=\"text\" name=\"login\" id=\"login\" placeholder=\"Login\" />\
+        <input type=\"text\" name=\"login\" id=\"login\" placeholder=\"Login\" required/>\
         </br>\
         \
         <label for=\"password\">Mot de passe</br></label>\
-        <input type=\"text\"  name=\"password\" id=\"password\" placeholder=\"Mot de passe\" />\
+        <input type=\"text\"  name=\"password\" id=\"password\" placeholder=\"Mot de passe\" required/>\
         </br>\
         <input type=\"submit\" value=\"connexion\"/>\
         <div class=\"liens\">\
@@ -143,6 +145,8 @@ function makeConnexionPannel(){
     $("body").html(s);
 //    $("body").html(s);
 }
+
+// dans form = action=\"javascript:function(){return;}
 
 function makeInscriptionPannel() {
     //$("body").empty();
@@ -166,7 +170,7 @@ function makeInscriptionPannel() {
     </header>\
   <div class=\"Panneau\">\
     <h2> Inscription </h2>\
-    <form action=\"javascript:function(){return;}()\" method=\"get\" onSubmit =\"javascript=connexion(this)\"/>\
+    <form  method=\"get\" onSubmit =\"javascript=connexion(this)\"/>\
     <label for=\"login\">Login</br></label>\
     <input type=\"text\" name=\"login\" id=\"login\" placeholder=\"Login\"/>\
     </br>\
@@ -183,6 +187,7 @@ function makeInscriptionPannel() {
     <input type=\"text\" name=\"email\" id=\"email\" placeholder=\"Votre addresse mail\"/>\
     </br>\
     <input type=\"submit\" value=\"Inscription\">\
+<div class=\"lien\"><span onclick=\"makeConnexionPannel()\">Deja inscrit ? </span></div> \
         </div>"
     //a = document.getElementsByTagName('body')[0];
     //alert(a);
@@ -208,7 +213,7 @@ function makeMainPannel(id, login, query){
               <p>recherche</p>\
             </div>\
             <div class=\"headElem\">\
-              <p>profil</p>\
+              <p>profil : "+login+"</p>\
              </div>\
             <div class=\"headElem\" onclick=\"makeConnexionPannel();\">\
                 <p>déconnexion</p>\
@@ -236,6 +241,11 @@ function makeMainPannel(id, login, query){
 
 $(function(){
     init();
-    makeMainPannel(1,2,3);
+    makeConnexionPannel(1,2,3);
+
+    //$(document).on('submit', '.form', function(e) {
+//	e.preventDefault();
+//	verif_form_connexion(this);
+  //  });
     // jQuery methods go here...
 });
