@@ -96,6 +96,85 @@ function getFromLocalDB(from, minId, maxId, nbMax){
     }
 }
 
+//Les messages
+function developperMessage(id){
+    var m = env.msg[id];
+    var el = $("#message" + id + "m.comments");
+    for (var i=0; i < m.comments.lenght;i++){
+        var c = m.comments[i];
+        el.append(i.gethtml());
+    }
+}
+
+function newComment(id){
+    var texte = $("#new_"+id).val();
+    if (!noConnection()){
+        // to do
+        b = "rien";
+    }
+    else{
+        newComment = response(id_JSON-Stringfy(new Commentaire(env.msg[id].comments.lengh+1,{"id":env.id,"login":envLogin}, text, newDate())));
+    
+    }
+}
+
+function newCommentResponse(d,rep){
+    var com = JSON.parse(rep,revival);
+    if (( com != undefined) && (com.erreur = undefined)){
+        var el = $("#message_"+id+".comments");
+        el.append(com.gethtml())
+        env.mgs[id].comments.push(com)
+        if (noConnection){
+            localdb[id] = env.msg[id];
+        }
+    }
+}
+
+function refreshMessages(){
+	if (env.query != undefined){
+		return ;
+	}
+	if (! env.noConnection){
+		$.ajax({
+			type: "POST",
+			url: "message/list",
+			data: "key=" + env.key + "&from=" + env.fromId 
+				+ "&id_max=" + env.maxId + "&id_min=" + env.minId + "&nb=" + 10,
+			datatype: "text",
+			success: function(rep){
+    			refreshMessagesResponse(JSON.stringify(rep));
+    		},
+    		error: function(xhr, status, err){
+    			func_error(status);
+    		}
+		});
+	}
+    else {
+        messages = getFromLocalDB(env.fromId, env.minId, env.maxId, env.nbMax);
+        refreshMessagesResponse(messages);
+    }
+}
+
+
+function refreshMessagesResponse(rep){
+	var tab = JSON.parse(rep, revival);
+	for (var i = tab.messages.length-1; i >= 0; i--){
+		var msg = tab.messages[i];
+		//$(".message-list").prepend(msg.getHtml());
+		$(msg.getHtml()).prependTo(".message-list").hide().slideToggle();
+		env.messages[msg.id] = msg;
+		if (msg.id > env.maxId){
+			env.maxId = msg.id;
+		}
+		if (env.minId < 0 || msg.id < env.minId){
+			env.minId = msg.id;
+		}
+	}
+}
+
+
+
+
 
 //-------------------------------------------------------------------
 //                         CREATION DES PANNELS
@@ -224,10 +303,10 @@ function makeMainPannel(id, login, query){
           <p>Il y a les statistique ici</p>\
         </nav>\
         <div id=\"corp\">\
-        <div id=\"newMessages\">\
+        <div class=\"message-list\ onload=\"refreshMessages();\">\
           <p>Ici on va faire apparaitre les différents messages</p>\
         </div>\
-        <div id=\"allMessages\">\
+        <div class=\"message-list\">\
           <p>Ici il y a les nouveaux messages</p>\
         </div>\
         </div>\
@@ -242,7 +321,7 @@ function makeMainPannel(id, login, query){
 $(function(){
     init();
     makeConnexionPannel(1,2,3);
-
+    
     //$(document).on('submit', '.form', function(e) {
 //	e.preventDefault();
 //	verif_form_connexion(this);

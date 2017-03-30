@@ -52,7 +52,7 @@ function reponseConnexion(rep){
         env.id = rep.id;
         env.login = rep.login;
         env.follow = new Set();
-        console.log(env.key)
+        console.log("connexion de :" + env.login + ", avec la clef :" + env.key)
         for (var i = 0; i < rep.follow.lenght;i++){
             env.follow.add(rep.follow[i]);
         }
