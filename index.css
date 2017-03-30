@@ -111,5 +111,38 @@ justify-content: space-around;
     border: 0.5px grey solid;
     border-radius: 4px;
     margin: 15px;
-    padding: 15px;
+    /*padding: 15px;*/
   }
+
+ .new-message
+ {
+    background-color:white;
+    border: 0.5px grey solid;
+    border-radius: 4px;
+    margin: 15px;
+ }
+
+ .message
+ {
+     border: 0.5px grey solid;
+     background-color:#343538;
+     color: white;
+     border-radius: 4px;
+     padding-top:0px;
+ }
+ 
+ .tete_document
+ {
+     background-color: green;
+     color:white;
+     border-bottom: 0.5px grey solid;
+     border-radius:4px;
+ }
+
+ .titre{
+     background-color: green;
+     color:white;
+     border-bottom: 0.5px grey solid;
+     border-radius: 4px;
+     width:100%;
+ }

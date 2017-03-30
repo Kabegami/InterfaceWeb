@@ -14,7 +14,11 @@ function Message(id,auteur,texte,date,comments){
 }
 
 Message.prototype.getHtml = function(){
-    var s = "<div class='message'>" + this.id +" " + this.auteur +" " + this.texte +" " + this.date +" " + this.comments + " !" + "</div>"
+    var s = "<div class='message'>\
+    <div class=\"tete_document\">\
+    <p> message numero : " +  this.id +"  de : " + this.auteur.login +"</p>\
+   </div>\
+<div class=\"text\"> <p>" +"contenu : " +  this.texte +"</p><p>" + this.date +"</p>" + this.comments + " !" + "</div></div>"
     return s;
 }
 
@@ -27,11 +31,6 @@ function Commentaire(id,auteur,texte,date){
 
 Commentaire.prototype.getHtml = function(){
     var s = "<div class='commentaire'>" + "<div class='auteur'>" + this.auteur + "</div>" + "<div class='texte'>" + this.texte  + "</div>" 
-    return s;
-}
-
-Message.prototype.getHtml = function(){
-    var s = "<div id='message'>" + this.id + " " + this.auteur + " " + this.texte + " " + this.date +" " + this.comments + " !" + "</div>"
     return s;
 }
 
@@ -51,13 +50,14 @@ function init(){
     //alert("la fonction init est lancé");
     env = new Object();
     env.noConnexion = true;
+    localdb = [];
+    follow = [];
     setVirtualMessage();
+    //alert(follow.length);
 }
     
 function setVirtualMessage(){
-    // on créer une base de donnée local pour les test
-    localdb = [];
-    follow = [];
+    // on créer une base de donnée local pour les test;
     var user1 = {"id":1,"login":"bob"};
     var user2 = {"id":2,"login":"toto"};
     var user3 = {"id":3,"login":"raoul"};
@@ -70,7 +70,11 @@ function setVirtualMessage(){
     follow[3].add(2);
     var com1 = new Commentaire(5,user3,"hum",new Date());
     var com2 = new Commentaire(6,user1,"Hi !",new Date());
-    localdb[3] = new Message(42,user1,"rololol",new Date(),[com1,com2]);
+    var t1 = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lobortis sollicitudin luctus. In aliquet elementum nisi, id condimentum metus scelerisque nec. Aliquam erat volutpat. Quisque tellus orci, blandit sit amet nibh eu, sollicitudin volutpat felis. Quisque in arcu est. Integer tincidunt tincidunt finibus. Curabitur fermentum pulvinar maximus. In vel pellentesque nisi, a finibus turpis. Quisque posuere vestibulum nisi, sed gravida orci."
+    var t2 = "Sed fringilla posuere sapien, sed lobortis lectus facilisis vulputate. In non ante ultrices, gravida mauris vitae, pulvinar augue. Integer vitae lacus hendrerit, dictum leo in, bibendum risus. Aenean scelerisque massa in sem cursus, ut molestie nisi suscipit. Vivamus vestibulum dui vitae risus consequat porttitor. Fusce eu risus turpis. Donec ornare tempor metus, a consectetur nulla auctor id. Suspendisse massa mi, ornare eu dui nec, pretium laoreet leo."
+    localdb[0] = new Message(42,user1,t1,new Date(),[com1,com2]);
+    localdb[1] = new Message(43, user2,t2, new Date(), [com1]);
+    //alert(localdb.length);
 }
 
 function getFromLocalDB(from, minId, maxId, nbMax){
@@ -93,6 +97,7 @@ function getFromLocalDB(from, minId, maxId, nbMax){
                 tab.push(m)
             }
         }
+        return tab
     }
 }
 
@@ -152,6 +157,29 @@ function refreshMessages(){
     else {
         messages = getFromLocalDB(env.fromId, env.minId, env.maxId, env.nbMax);
         refreshMessagesResponse(messages);
+    }
+}
+
+function getAllMessage(){
+    //les messages sont contenus dans localdb
+    //alert("je suis dans la fonction getAllMessage");
+    //alert(localdb.length)
+    for(var i=0; i < localdb.length; i++){
+        var msg = localdb[i];
+        //alert(msg.getHtml())
+        $(msg.getHtml()).appendTo(".message-list");
+    }
+}
+
+function getSomeMessage(idMin, idMax, nb){
+    var cpt = 0
+    alert("getSomeMessage")
+    for(var i=0; i < localdb.length; i++){
+        var msg = localdb[i]
+        
+        if (msg.id >= idMin && msg.id <= idMax && cpt < idMax){
+            $(msg.getHtml()).appendTo(".new-message")
+        }
     }
 }
 
@@ -303,19 +331,20 @@ function makeMainPannel(id, login, query){
           <p>Il y a les statistique ici</p>\
         </nav>\
         <div id=\"corp\">\
-        <div class=\"message-list\ onload=\"refreshMessages();\">\
-          <p>Ici on va faire apparaitre les différents messages</p>\
+        <div class=\"new-message\">\
+          <div class=\"titre\"><p>Nouveaux messages</p></div>\
         </div>\
         <div class=\"message-list\">\
-          <p>Ici il y a les nouveaux messages</p>\
+          <div class=\"titre\"><p>Tous les messages</p></div>\
         </div>\
         </div>\
         </div>\
-        <footer>\
+        <footer class=\"Panneau\">\
           <p> Me contacter : <a href=\"\">lucas.becirspahic@gmail.com</p>\
         </footer>"
     $("body").html(s)
-  
+    getAllMessage();
+    getSomeMessage(0,42,5);
 }
 
 $(function(){
