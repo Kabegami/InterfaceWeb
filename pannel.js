@@ -14,11 +14,11 @@ function Message(id,auteur,texte,date,comments){
 }
 
 Message.prototype.getHtml = function(){
-    var s = "<div class='message'>\
-    <div class=\"tete_document\">\
+    var s = "<div class=\"tete_document\">\
     <p> message numero : " +  this.id +"  de : " + this.auteur.login +"</p>\
    </div>\
-<div class=\"text\"> <p>" +"contenu : " +  this.texte +"</p><p>" + this.date +"</p>" + this.comments + " !" + "</div></div>"
+<div class='message'>\
+ <p>" +"contenu : " +  this.texte +"</p><p>" + this.date +"</p>" + this.comments + " !" + "</div>"
     return s;
 }
 
@@ -173,7 +173,7 @@ function getAllMessage(){
 
 function getSomeMessage(idMin, idMax, nb){
     var cpt = 0
-    alert("getSomeMessage")
+    //alert("getSomeMessage")
     for(var i=0; i < localdb.length; i++){
         var msg = localdb[i]
         
@@ -229,8 +229,8 @@ function makeConnexionPannel(){
           <p>connexion</p>\
         </div>\
       </header>\
-      <div class= \"Panneau\">\
-        <h2 class=\"titre\"> Ouvrir une session</h1>\
+      <div class=\"titre_panneau\"> <p>Ouvrir une session</p></div>\
+      <div class= \"Panneau_avec_titre\">\
         <form action=\"javascript:function(){return;}()\" method =\"get\" onSubmit =\"javascript=connexion(this)\"/ id=>\
         <label for=\"login\">Login</br></label>\
         <input type=\"text\" name=\"login\" id=\"login\" placeholder=\"Login\" required/>\
@@ -275,25 +275,26 @@ function makeInscriptionPannel() {
           <p>inscription</p>\
         </div>\
     </header>\
-  <div class=\"Panneau\">\
-    <h2> Inscription </h2>\
-    <form  method=\"get\" onSubmit =\"javascript=connexion(this)\"/>\
+  <div class=\"titre_panneau\"> <p>Inscription</p> </div>\
+  <div class=\"Panneau_avec_titre\">\
+    <form action=\"javascript:function(){return;}()\" method =\"get\" onSubmit =\"javascript=connexion(this)\"/ id=>\
     <label for=\"login\">Login</br></label>\
-    <input type=\"text\" name=\"login\" id=\"login\" placeholder=\"Login\"/>\
+    <input type=\"text\" name=\"login\" id=\"login\" placeholder=\"Login\" required/>\
     </br>\
     <label for=\"nom\">Nom</label></br>\
-    <input type=\"text\" name=\"nom\" id=\"nom\" placeholder=\"Votre nom\"/>\
+    <input type=\"text\" name=\"nom\" id=\"nom\" placeholder=\"Votre nom\" required/>\
     </br>\
     <label for=\"prenom\">Prenom</label></br>\
-    <input type=\"text\" name=\"prenom\" id=\"prenom\" placeholder=\"Votre prenom\"/>\
+    <input type=\"text\" name=\"prenom\" id=\"prenom\" placeholder=\"Votre prenom\" required/>\
     </br>\
     <label for=\"password\">Mot de passe</label></br>\
-    <input type=\"text\" name=\"password\" id=\"password\" placeholder=\"Votre mot de passe\"/>\
+    <input type=\"text\" name=\"password\" id=\"password\" placeholder=\"Votre mot de passe\" required/>\
     </br>\
     <label for=\"email\">Email</label></br>\
-    <input type=\"text\" name=\"email\" id=\"email\" placeholder=\"Votre addresse mail\"/>\
+    <input type=\"text\" name=\"email\" id=\"email\" placeholder=\"Votre addresse mail\" required/>\
     </br>\
-    <input type=\"submit\" value=\"Inscription\">\
+    <input type=\"submit\" value=\"connexion\">\
+</form>\
 <div class=\"lien\"><span onclick=\"makeConnexionPannel()\">Deja inscrit ? </span></div> \
         </div>"
     //a = document.getElementsByTagName('body')[0];
@@ -331,11 +332,11 @@ function makeMainPannel(id, login, query){
           <p>Il y a les statistique ici</p>\
         </nav>\
         <div id=\"corp\">\
+        <div class=\"titre\"><p>Nouveaux messages</p></div>\
         <div class=\"new-message\">\
-          <div class=\"titre\"><p>Nouveaux messages</p></div>\
         </div>\
+        <div class=\"titre\"><p>Tous les messages</p></div>\
         <div class=\"message-list\">\
-          <div class=\"titre\"><p>Tous les messages</p></div>\
         </div>\
         </div>\
         </div>\
