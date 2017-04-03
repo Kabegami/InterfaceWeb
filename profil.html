@@ -2,76 +2,38 @@
 <html>
   <head>
     <title>Profil</title>
-    <style>
- .navigation
-          {
-          display:flex;
-          justify-content: space-between;
-          color:white;
-          background-color:#343538;
-          margin-bottom:5px;
-          font-weight:bold;
-          font-size:1.1em;
-          text-align:center;
-          }
-
-          .logo
-          {
-          flex:1;
-          }
-
-          .headElem:hover
-          {
-          background-color:black;
-          }
-          
-          .headElem{
-          flex:1;
-          }
-
-          .active{
-          flex:1;
-          background-color:green;
- }
-           body{
-          background-color:#e5eaea;
- }
-           .Panneau
-          {
-          background-color:white;
-          border: 0.5px grey solid;
-          border-radius: 4px;
-          margin: 15px;
- padding: 15px;
-
- }
+    <link rel="stylesheet" href="index.css" />
 </style>
   </head>
   <body>
-    <header class="navigation">
-        <div class="logo">
+    <header class=\"navigation\">
+        <div class=\"logo\">
           <p>Logo</p>
         </div>
-        <div class="headElem">
+        <div class=\"headElem\">
           <p>accueil</p>
         </div>
-        <div class="headElem">
+        <div class=\"headElem\">
           <p>recherche</p>
         </div>
-        <div class="active">
+        <div class=\"active\">
           <p>profil</p>
         </div>
-        <div class="headElem">
+        <div class=\"headElem\">
           <p>déconnexion</p>
         </div>
     </header>
-    <div class="Principal">
-      <div class="Panneau">
-        <h2> Nom utilisateur </h2>
+    <div class=\"Principal\">
+      <div class=\"titre_panneau\"><p>Ecrire un nouveau message</p></div>
+      <div class=\"Panneau_avec_titre\">
+        <form action=\"javascript:function(){return;}()\" method =\"get\" onSubmit =\"javascript=connexion(this)\"/ id=>
+          <input type=\"text\" name=\"commentaire\" placeholder=\"Votre message...\" required/>
+          <input class=\"submit_com\" type=\"submit\" value=\"poster votre message\"\>
+        </form>
+      </div>
+      <div class=\"titre_panneau\"></p>Liste des amis</p></div>
+      <div class=\"Panneau_avec_titre\">
         <p> bla bla bla bla bla bla</p>
       </div>
-      <div class="Panneau">
-        <h2>Liste des amis </h2>
-        <p> bla bla bla bla bla bla</p>
   </body>
   </html>

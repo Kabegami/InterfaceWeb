@@ -15,10 +15,20 @@ function Message(id,auteur,texte,date,comments){
 
 Message.prototype.getHtml = function(){
     var s = "<div class=\"tete_document\">\
-    <p> message numero : " +  this.id +"  de : " + this.auteur.login +"</p>\
+    <p> message numero " +  this.id +"  de  " + this.auteur.login +"</p>\
    </div>\
 <div class='message'>\
- <p>" +"contenu : " +  this.texte +"</p><p>" + this.date +"</p>" + this.comments + " !" + "</div>"
+ <p>" + this.texte +"</p><p>" + this.date +"</p><div class=\"debut_comments\"></div>"
+    for (var i =0; i< this.comments.length ; i++){
+        s = s + this.comments[i].getHtml();
+    }
+    s = s + "<div class=\"debut_comments\"></div><div class=\"nouveau_commentaire\"><p> Laissez un commentaire </p>\
+    <form action=\"javascript:function(){return;}()\" method =\"get\" onSubmit =\"javascript=connexion(this)\"/ id=>\
+<input type=\"text\" name=\"commentaire\" id=\"commentaire\" placeholder=\"votre commentaire...\" required/>\
+<input class=\"submit_com\" type=\"submit\" value=\"poster votre commentaire\">\
+</form>\
+";
+    s = s + "</div>";
     return s;
 }
 
@@ -30,7 +40,7 @@ function Commentaire(id,auteur,texte,date){
 }
 
 Commentaire.prototype.getHtml = function(){
-    var s = "<div class='commentaire'>" + "<div class='auteur'>" + this.auteur + "</div>" + "<div class='texte'>" + this.texte  + "</div>" 
+    var s = "<div class='commentaire'>" + "<div class='auteur'> <p> commentaire numero  " + this.id + " de  " +  this.auteur.login + "</p> </div>" + "<div class='texte'> <p>" + this.texte  + "</p><p>" +  this.date +  "</p></div></div>" ;
     return s;
 }
 
@@ -303,6 +313,39 @@ function makeInscriptionPannel() {
     $("body").html(s);
 }
 
+function makeProfilPannel(){
+    s = "<header class=\"navigation\">\
+        <div class=\"logo\">\
+          <p>Logo</p>\
+        </div>\
+        <div class=\"headElem\">\
+          <p>accueil</p>\
+        </div>\
+        <div class=\"headElem\">\
+          <p>recherche</p>\
+        </div>\
+        <div class=\"active\">\
+          <p>profil</p>\
+        </div>\
+        <div class=\"headElem\" onclick=\"makeConnexionPannel();\">\
+          <p>déconnexion</p>\
+        </div>\
+    </header>\
+    <div class=\"Principal\">\
+      <div class=\"titre_panneau\"><p>Ecrire un nouveau message</p></div>\
+      <div class=\"Panneau_avec_titre\">\
+        <form action=\"javascript:function(){return;}()\" method =\"get\" onSubmit =\"javascript=connexion(this)\"/ id=>\
+          <input type=\"text\" name=\"commentaire\" placeholder=\"Votre message...\" required/>\
+          <input class=\"submit_com\" type=\"submit\" value=\"poster votre message\"\>\
+        </form>\
+      </div>\
+      <div class=\"titre_panneau\"></p>Liste des amis</p></div>\
+      <div class=\"Panneau_avec_titre\">\
+        <p> bla bla bla bla bla bla</p>\
+      </div>"
+    $("body").html(s)
+}
+
 function makeMainPannel(id, login, query){
     env.mongo = [];
     env.minId = -1;
@@ -312,7 +355,7 @@ function makeMainPannel(id, login, query){
     env.query = query;
     var s = "<header class=\"navigation\">\
             <div class=\"logo\">\
-                <p>Logo</p>\
+            <p>Logo</p>\
             </div>\
             <div class=\"active\">\
               <p>accueil</p>\
@@ -320,7 +363,7 @@ function makeMainPannel(id, login, query){
             <div class=\"headElem\">\
               <p>recherche</p>\
             </div>\
-            <div class=\"headElem\">\
+            <div class=\"headElem\" onclick=\"makeProfilPannel();\">\
               <p>profil : "+login+"</p>\
              </div>\
             <div class=\"headElem\" onclick=\"makeConnexionPannel();\">\
